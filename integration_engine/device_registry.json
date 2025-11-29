@@ -1,0 +1,22 @@
+{
+    "devices": [
+        {
+            "id": "printer01",
+            "type": "printer",
+            "host": "localhost",
+            "port": 9001
+        },
+        {
+            "id": "scanner01",
+            "type": "scanner",
+            "host": "localhost",
+            "port": 9002
+        },
+        {
+            "id": "analyzer01",
+            "type": "lab_analyzer",
+            "host": "localhost",
+            "port": 9003
+        }
+    ]
+}
