@@ -10,7 +10,7 @@ Built to demonstrate **system integration architecture, ETL processing, and even
 
 ---
 
-👩‍💻 **Created by Faith Burnett (FABDEV)**  
+👩‍💻 **Created by Faith Burnett (faithb.dev)**  
 Full-Stack Developer • Data Engineering • Systems Integration
 
 </div>
@@ -337,7 +337,10 @@ GitHub
 https://github.com/faithbrnttt
 
 Portfolio  
-https://faithburnett.dev
+https://faithb.dev
+
+LinkedIn
+www.linkedin.com/in/faithbdev
 
 ---
 
