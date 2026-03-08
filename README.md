@@ -1,77 +1,348 @@
-# HospitalIntegrationSimulator
+<div align="center">
 
-A Python-based hospital device integration simulator that models how core lab devices interact within a healthcare workflow.
+# 🏥 Hospital Integration Simulator
 
-This project simulates a small integration environment with:
-- **Barcode scanners**
-- **Label printers**
-- **Lab analyzers**
-- A central **integration engine**
-- **Event-driven workflow processing**
-- **ETL-style normalization for lab results**
-- **PostgreSQL logging and persistence**
+### Device Integration • Event Processing • Healthcare Workflow Simulation
 
-The goal of this project is to demonstrate how healthcare-adjacent devices and services can communicate through a lightweight integration layer while supporting workflow orchestration, logging, and result processing.
+A backend system that simulates real-world hospital device workflows including barcode scanners, lab analyzers, and label printers connected through an integration engine.
+
+Built to demonstrate **system integration architecture, ETL processing, and event-driven workflows** using Python.
 
 ---
 
-## Features
+👩‍💻 **Created by Faith Burnett (FABDEV)**  
+Full-Stack Developer • Data Engineering • Systems Integration
 
-- Simulated **printer**, **scanner**, and **lab analyzer** device services
-- Central **integration engine** that loads devices from a registry
-- HTTP-based communication between the engine and devices
-- **Event queue** for workflow orchestration
-- Simulated workflow:
-  - Scan specimen
-  - Run analyzer test
-  - Print specimen label
-- **Retry logic** for device communication failures
-- **Device status tracking** (ONLINE / OFFLINE)
-- **ETL processing** for analyzer results
-- PostgreSQL integration for:
-  - scan event logging
-  - specimen tracking
-  - lab test result logging
-  - print job logging
-- Test suite covering configuration, devices, ETL, queue logic, retries, and integration engine behavior
+</div>
 
 ---
 
-## Project Structure
+# Overview
 
-```text
-HospitalIntegrationSimulator/
+The **Hospital Integration Simulator** models how healthcare devices communicate through an integration layer.
+
+The system simulates:
+
+• barcode scanners generating specimen IDs  
+• lab analyzers producing test results  
+• label printers generating specimen labels  
+• an integration engine orchestrating the workflow  
+• ETL normalization for laboratory results  
+• PostgreSQL persistence for device events  
+
+This project demonstrates how backend systems coordinate multiple devices and workflows similar to those found in hospital environments.
+
+---
+
+# System Architecture
+
+
+Scanner → Integration Engine → Analyzer
+↓ ↓
+Database ← ETL Processor
+↓
+Printer
+
+
+The integration engine acts as the **central coordination layer** between devices and backend processing systems.
+
+---
+
+# Key Features
+
+### Device Simulation
+Three independent device services simulate hospital hardware:
+
+| Device | Description |
+|------|-------------|
+| Scanner | Generates specimen barcode events |
+| Lab Analyzer | Produces simulated test results |
+| Label Printer | Prints specimen labels using ZPL |
+
+---
+
+### Integration Engine
+
+The integration engine manages:
+
+• device registry loading  
+• API communication with devices  
+• event workflow orchestration  
+• retry logic for device failures  
+• device status tracking  
+
+---
+
+### Event-Driven Workflow
+
+Example specimen processing workflow:
+
+
+SCAN_SPECIMEN
+↓
+RUN_TEST
+↓
+PRINT_LABEL
+
+
+This pipeline simulates how laboratory devices coordinate through backend systems.
+
+---
+
+### ETL Processing
+
+Analyzer output is processed through an ETL layer to normalize results before storing them.
+
+Example transformations:
+
+
+RAW ANALYZER OUTPUT
+↓
+ETL NORMALIZATION
+↓
+STRUCTURED DATABASE RECORD
+
+
+This demonstrates how healthcare device data can be prepared for downstream systems such as reporting platforms or EHR interfaces.
+
+---
+
+# Project Structure
+
+
+HospitalIntegrationSimulator
 │
-├── devices/
-│   ├── printer/
-│   │   ├── config.json
-│   │   └── printer_app.py
-│   ├── scanner/
-│   │   ├── config.json
-│   │   └── scanner_app.py
-│   └── lab_analyzer/
-│       ├── analyzer_app.py
-│       └── config.json
+├── devices
 │
-├── integration_engine/
-│   ├── __init__.py
-│   ├── device_client.py
-│   ├── device_registry.json
-│   ├── engine.py
-│   ├── etl_processor.py
-│   ├── event_processor.py
-│   ├── logger.py
-│   ├── postgres_db.py
-│   └── utils.py
+│ ├── printer
+│ │ ├── config.json
+│ │ └── printer_app.py
+│ │
+│ ├── scanner
+│ │ ├── config.json
+│ │ └── scanner_app.py
+│ │
+│ └── lab_analyzer
+│ ├── config.json
+│ └── analyzer_app.py
 │
-├── logs/
-├── tests/
-│   ├── conf_test.py
-│   ├── database_test.py
-│   ├── device_test.py
-│   ├── etl_test.py
-│   ├── integration_engine_test.py
-│   ├── queue_test.py
-│   └── retry_test.py
+├── integration_engine
+│
+│ ├── engine.py
+│ ├── device_client.py
+│ ├── device_registry.json
+│ ├── event_processor.py
+│ ├── etl_processor.py
+│ ├── postgres_db.py
+│ ├── logger.py
+│ └── utils.py
+│
+├── tests
+│
+│ ├── conf_test.py
+│ ├── device_test.py
+│ ├── database_test.py
+│ ├── etl_test.py
+│ ├── integration_engine_test.py
+│ ├── queue_test.py
+│ └── retry_test.py
+│
+├── logs
 │
 └── requirements.txt
+
+
+---
+
+# Tech Stack
+
+| Category | Technology |
+|--------|-------------|
+| Language | Python |
+| API Framework | Flask |
+| Database | PostgreSQL |
+| HTTP Communication | Requests |
+| Testing | PyTest |
+| Device Simulation | REST APIs |
+| Workflow Processing | Event Queue |
+
+---
+
+# Installation
+
+### Clone the repository
+
+
+git clone https://github.com/faithbrnttt/HospitalIntegrationSimulator.git
+
+cd HospitalIntegrationSimulator
+
+
+---
+
+### Create virtual environment
+
+Windows
+
+
+python -m venv venv
+venv\Scripts\activate
+
+
+Mac/Linux
+
+
+python3 -m venv venv
+source venv/bin/activate
+
+
+---
+
+### Install dependencies
+
+
+pip install -r requirements.txt
+
+
+---
+
+# Running the Simulator
+
+Each device runs as an independent service.
+
+### Start Printer
+
+
+cd devices/printer
+python printer_app.py
+
+
+### Start Scanner
+
+
+cd devices/scanner
+python scanner_app.py
+
+
+### Start Analyzer
+
+
+cd devices/lab_analyzer
+python analyzer_app.py
+
+
+---
+
+### Run Integration Engine
+
+From project root:
+
+
+python -m integration_engine.engine
+
+
+This will simulate:
+
+• device status checks  
+• barcode scanning  
+• analyzer test processing  
+• specimen label printing  
+• workflow event processing  
+
+---
+
+# Example Label Output
+
+Example ZPL label generated by the simulator:
+
+
+^XA
+^FO50,50^ADN,36,20^FDSpecimen: LAB1234567890^FS
+^XZ
+
+
+---
+
+# Testing
+
+Run the full test suite:
+
+
+pytest
+
+
+Tests include:
+
+• configuration validation  
+• device communication  
+• database operations  
+• ETL processing  
+• event queue behavior  
+• retry handling  
+• integration engine logic  
+
+---
+
+# Use Cases
+
+This project demonstrates engineering patterns relevant to:
+
+• Healthcare device integration  
+• Backend service orchestration  
+• Event-driven architecture  
+• ETL data pipelines  
+• API-based system integration  
+• Operational technology workflows  
+
+---
+
+# Future Improvements
+
+Planned enhancements:
+
+• HL7 message simulation  
+• Docker multi-service environment  
+• web dashboard for device monitoring  
+• persistent workflow queue  
+• specimen lifecycle tracking  
+• audit reporting and metrics  
+• simulated LIS/EHR interface  
+
+---
+
+# Why I Built This
+
+Healthcare systems rely on complex device workflows that require reliable backend integration.
+
+This project was created to explore how an integration layer can coordinate devices such as scanners, analyzers, and printers while managing workflow orchestration and data processing.
+
+It reflects my interest in:
+
+• systems integration  
+• healthcare technology  
+• backend engineering  
+• event-driven workflows  
+• ETL data processing  
+
+---
+
+# Author
+
+### Faith Burnett
+
+Full-Stack Developer  
+Data Engineering • Integration Systems
+
+GitHub  
+https://github.com/faithbrnttt
+
+Portfolio  
+https://faithburnett.dev
+
+---
+
+<div align="center">
+
+### ⭐ If you found this project interesting, feel free to star the repo!
+
+</div>
