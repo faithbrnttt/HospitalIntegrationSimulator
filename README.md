@@ -9,10 +9,10 @@ A backend system that simulates real-world hospital device workflows including b
 Built to demonstrate **system integration architecture, ETL processing, and event-driven workflows** using Python.
 
 ---
-
 👩‍💻 **Created by Faith Burnett**  
-Full-Stack Developer • Data Engineering • Systems Integration
+Full-Stack Developer • Data Engineering • Systems Integration  
 🌐 https://faithb.dev
+
 </div>
 
 ---
