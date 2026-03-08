@@ -10,9 +10,9 @@ Built to demonstrate **system integration architecture, ETL processing, and even
 
 ---
 
-👩‍💻 **Created by Faith Burnett (faithb.dev)**  
+👩‍💻 **Created by Faith Burnett**  
 Full-Stack Developer • Data Engineering • Systems Integration
-
+🌐 https://faithb.dev
 </div>
 
 ---
@@ -333,14 +333,14 @@ It reflects my interest in:
 Full-Stack Developer  
 Data Engineering • Integration Systems
 
-GitHub  
-https://github.com/faithbrnttt
-
-Portfolio  
+🌐 Portfolio  
 https://faithb.dev
 
-LinkedIn
-www.linkedin.com/in/faithbdev
+💻 GitHub  
+https://github.com/faithbrnttt  
+
+🔗 LinkedIn  
+https://www.linkedin.com/in/faithbdev
 
 ---
 
